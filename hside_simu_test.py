@@ -7,7 +7,7 @@ import os
 import argparse
 from utility import *
 from hsi_setup import Engine, train_options, make_dataset
-
+import time
 
 if __name__ == '__main__':
     """Training settings"""
@@ -28,22 +28,24 @@ if __name__ == '__main__':
     target_transform = HSI2Tensor()
 
 
+
+
     """Test-Dev"""
-    basefolder = '/data/HSI_Data/Hyperspectral_Project/'
+
+    basefolder = '/data/HSI_Data/icvl_noise_50/512_noniid'
+
     
     
     mat_datasets = [MatDataFromFolder(
-        basefolder, size=1,fns=['Urban_304.mat']) ]
-
-    
+        basefolder, size=50) ]
     if not engine.get_net().use_2dconv:
         mat_transform = Compose([
-            LoadMatHSI(input_key='input', gt_key='input',
+            LoadMatHSI(input_key='input', gt_key='gt',
                     transform=lambda x:x[ ...][None], needsigma=False),
         ])
     else:
         mat_transform = Compose([
-            LoadMatHSI(input_key='input', gt_key='input', needsigma=False),
+            LoadMatHSI(input_key='input', gt_key='gt', needsigma=False),
         ])
 
     mat_datasets = [TransformDataset(mat_dataset, mat_transform)
@@ -56,6 +58,15 @@ if __name__ == '__main__':
         num_workers=1, pin_memory=opt.no_cuda
     ) for mat_dataset in mat_datasets]        
 
+    base_lr = opt.lr
+    epoch_per_save = 5
+    adjust_learning_rate(engine.optimizer, opt.lr)
+
+    engine.epoch  = 0
     
+
+    strart_time = time.time()
     engine.test(mat_loaders[0], basefolder)
-        
+    end_time = time.time()
+    test_time = end_time-strart_time
+    print('cost-time: ',(test_time/50))

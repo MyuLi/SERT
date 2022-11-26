@@ -324,7 +324,7 @@ class Engine(object):
         self.__setup()
 
     def __setup(self):
-        self.writertxt = open('val_results/'+self.opt.arch+self.opt.prefix+'.txt', 'w')
+
 
         self.basedir = join('checkpoints', self.opt.arch)
         if not os.path.exists(self.basedir):
@@ -537,19 +537,12 @@ class Engine(object):
         print('==> Resuming from checkpoint %s..' % resumePath)
         assert os.path.isdir('checkpoints'), 'Error: no checkpoint directory found!'
         checkpoint = torch.load(resumePath or model_best_path)
-        #### comment when using memnet
-        #self.epoch = checkpoint['epoch'] 
-        #self.iteration = checkpoint['iteration']
+
         if load_opt:
             self.optimizer.load_state_dict(checkpoint['optimizer'])
         ###
         self.get_net().load_state_dict(checkpoint['net'])
 
-        
-        # model_dict = self.get_net().state_dict()
-        # pretrained_dict = {k: v for k, v in checkpoint['net'].items() if not(('total' in k) or ('cab') in k) }
-        # model_dict.update(pretrained_dict)
-        # self.get_net().load_state_dict(model_dict)
         
 
     def train(self, train_loader,val):
@@ -558,8 +551,7 @@ class Engine(object):
         train_loss = 0
         train_psnr = 0
         for batch_idx, (inputs, targets) in enumerate(train_loader):
-            # if (batch_idx+1)%(1000)==0:
-            #     self.validate(val, 'icvl-validate-noniid')
+
             if not self.opt.no_cuda:
                 inputs, targets = inputs.to(self.device), targets.to(self.device)        
                 #print(inputs.shape,inputs.type)
@@ -608,15 +600,8 @@ class Engine(object):
                     if fn.endswith('.mat')
                 ]
         print('[i] Eval dataset ...')
-        #save_path = '/media/lmy/LMY/cvpr2023/images/icvl_noniid/noisy'# +self.opt.arch
-        save_path = 'visualization/visual_crop/'
-        if not os.path.exists(save_path):
-            mkdir(save_path)
-        # for name, module in self.net.named_modules():
-        #     print(name)
-        #     if name in modules_for_plot:
-        #         module.register_forward_hook(hook_func)
-        # #draw_weight(self.net)
+
+
         print(len(valid_loader))
         with torch.no_grad():
             for batch_idx, (inputs, targets) in enumerate(valid_loader):
@@ -1015,9 +1000,7 @@ class Engine(object):
                 join(self.prefix, name, 'val_psnr_epoch'), avg_psnr, self.epoch)
             self.writer.add_scalar(
                 join(self.prefix, name, 'val_sam_epoch'), avg_sam, self.epoch)
-            self.writertxt.write('Epoch:{} PSNR:{} SAM:{} loss:{} \n'.format(self.epoch,avg_psnr, avg_sam, avg_loss
-            ))
-            self.writertxt.flush()
+
 
         print(avg_psnr, avg_loss,avg_sam)
         return avg_psnr, avg_loss,avg_sam
