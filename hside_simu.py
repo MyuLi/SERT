@@ -9,7 +9,6 @@ from utility import *
 import datetime
 import time
 from hsi_setup import Engine, train_options, make_dataset
-#os.environ["WANDB_MODE"] = "offline"
 
 if __name__ == '__main__':
     """Training settings"""
@@ -19,11 +18,6 @@ if __name__ == '__main__':
     description='Hyperspectral Image Denoising (Complex noise)')
     opt = train_options(parser)
     print(opt)
-
-    data = datetime.datetime.now()
-    wandb.init(project="hsi-denoising", entity="miayili",name=opt.arch+opt.prefix+'-'+str(data.month)+'-'+str(data.day)+'-'+str(data.hour)+':'+str(data.minute),config=opt)  
-    wandb.config.update(parser)
-    
 
     """Setup Engine"""
     engine = Engine(opt)
@@ -49,17 +43,12 @@ if __name__ == '__main__':
     train_dataset = ImageTransformDataset(icvl_64_31, train_transform,target_transform)
     print('==> Preparing data..')
 
-    # icvl_64_31_TL = make_dataset(
-    #     opt, train_transform,
-    #     target_transform, common_transform, 64)
-
     """Test-Dev"""
     basefolder = '/data/HSI_Data/icvl_val_gaussian/512_10_70'
     if not os.path.exists(basefolder):
         basefolder ='/home/limiaoyu/data/icvl_val_gaussian/512_50'
     
-    # mat_names = ['icvl_test_512_sigma_'+str(opt.sigma)]
-   # print(engine.net.flops())
+
     mat_datasets = [MatDataFromFolder(
         basefolder, size=5)]
 
@@ -91,21 +80,15 @@ if __name__ == '__main__':
     adjust_learning_rate(engine.optimizer, opt.lr)
 
     # from epoch 50 to 100
-    engine.epoch  = 40
+    engine.epoch  = 0 
     while engine.epoch < 100:
         np.random.seed()
 
-        # if engine.epoch == 50:
-        #     adjust_learning_rate(engine.optimizer, base_lr*0.1)
-        # if engine.epoch == 10:
-        #     adjust_learning_rate(engine.optimizer, base_lr*0.5)
         if engine.epoch == 50:
             adjust_learning_rate(engine.optimizer, base_lr*0.1)
         
         engine.train(train_loader,mat_loaders[0])
-        #engine.test(mat_loaders[0],basefolder)
-        engine.validate(mat_loaders[0], 'icvl-validate-noniid')
-        #engine.validate(mat_loaders[1], 'icvl-validate-mixture')
+        engine.validate(mat_loaders[0], 'wdc')
 
         display_learning_rate(engine.optimizer)
         print('Latest Result Saving...')

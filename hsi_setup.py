@@ -31,155 +31,6 @@ model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
     and callable(models.__dict__[name]))
 
-INSTANCE_FOLDER = './visualization/visual_crop/fea/'
-modules_for_plot = ['layers.2','layers.1','layers.0']
-modules_for_plot = ['encoder.layers.3']  #for qrnn3d
-modules_for_plot = ['Up_conv4','Conv2.conv']  #for unet3d
-modules_for_plot = ['layers.0.smsblock.5.attns.attns.0.attn_drop'] #for ccc_cswin_weight
-#modules_for_plot = ['layers.2.smsblock.5.attn.attn_drop'] #for smsnet2
-modules_for_plot = ['refinement.3.attn.test'] #for remstormer
-modules_for_plot = ['layers.1.smsblock.3.norm1'] #for cswin_s
-#modules_for_plot = ['layers.2.smsblock.4.attns']
-# modules_for_plot = ['layers.2.smsblock.1.attns.c_attns.cab.3.subnet.1']
-# modules_for_plot = ['layers.0.smsblock.5.attns.c_attns.down_rank.subnet.1']
-# modules_for_plot = ['layers.1.smsblock.4.attns.c_attns.cab.3.upnet']
-NAME_IMAG = 'heat_map_me_32_2_3_ver.png'
-NAME_IMAG = 'heat_map_input_ra.png'
-def draw_features(width, height, x, savename):
-    tic = time.time()
-    fig = plt.figure(figsize=(4, 4))
-   
-
-    for i in range(width * height):
-        #plt.subplot(height, width, i + 1)
-        plt.axis('off')
-        img = x[i, 0, :, :]
-        pmin = np.min(img)
-        pmax = np.max(img)
-        img = ((img - pmin) / (pmax - pmin + 0.000001)) * 255*0.7  # float在[0，1]之间，转换成0-255
-        img = img.astype(np.uint8)  # 转成unit8
-        img = cv2.applyColorMap(img, cv2.COLORMAP_JET)  # 生成heat map
-        img = img[:, :, ::-1]  # 注意cv2（BGR）和matplotlib(RGB)通道是相反的
-        plt.imshow(img)
-        plt.savefig(savename[:-4]+str(i)+'png', dpi=300,bbox_inches='tight',pad_inches = -0.1)
-    fig.clf()
-    plt.close()
-
-def hook_func(module,input, output):
-    indata = input[0]
-    print(output.shape)
-    # print(indata[20:50])
-    # print(output[20:50])
-    # print(output.shape)
-    # print(module)
-    # for index in range(0,3):
-    #     data = output.clone().detach()[:,index]
-    #     in_data = indata.clone().detach()[:,index]
-    #     #in_data = in_data.reshape(32,32,96)
-    #     #exit()
-    #     image_name,in_image_name= get_image_name_for_hook(module)
-        
-    #     #data = data.permute(1, 0, 2, 3)
-    #     in_data = in_data[456:456+16]
-    #     in_data = in_data[:,None,...]
-
-    #     print(in_data.shape)
-    #     in_data = in_data[:,...]
-    #     in_data = in_data.permute(1, 0, 2, 3)
-    #     vutil.save_image(data, image_name, pad_value=0.5,normalize=True)
-    
-
-    #low_rank_draw()  #for low-rank vector extraction
-    out = output.view(64,64,96).permute(2,0,1).unsqueeze(1)
-    data= out.clone().detach().cpu().numpy()
-    draw_features(4,4,data[0:96:6,...],INSTANCE_FOLDER+NAME_IMAG)
-    #exit()
-
-    # data= indata.clone().detach().cpu().numpy()
-    # data = np.mean(data,axis=1)
-    # data = data[:,None,...]
-   
-    # draw_features(8,4,data,INSTANCE_FOLDER+NAME_IMAG)
-
-
-    
-
-def low_rank_draw():
-    index = [11,27,  4,7,  69,85,  191,203,218 ]
-    for i in range(len(index)):
-        index[i] = index[i]-1
-    indata=indata[index]
-    indata = indata.transpose(0,2)
-    print(indata)
-    LN = nn.LayerNorm((indata.shape[-1])).cuda()
-    indata = LN(indata)
-    print(indata.shape,'afternorm')
-    indata = indata.transpose(0,2).unsqueeze(-1)
-    map_of_vector = indata.squeeze().transpose(0,1).clone().detach().cpu().numpy()
-    grid_img = torchvision.utils.make_grid(indata, nrow=len(index),pad_value=0.85432,normalize=True)
-    print(grid_img.shape)
-    image = grid_img.permute(1, 2, 0).clone().detach().cpu().numpy()
-    image = np.asarray(image*255, dtype=np.uint8)
-    value = image[0,0]
-    print(value,image[0,1])
-
-    #image = cv2.applyColorMap(image, cv2.COLORMAP_JET)
-    # cv2.imwrite('./heat.png' ,image   )
-    plt.imshow(image,cmap='jet')
-    plt.axis('off')
-    plt.savefig('./test.eps',format='eps')
-    vutil.save_image(indata, 'vector.png',normalize=True,pad_value=0.8)
-
-
-def get_image_name_for_hook(module,input=False):
-    """
-    Generate image filename for hook function
-
-    Parameters:
-    -----------
-    module: module of neural network
-    """
-    os.makedirs(INSTANCE_FOLDER, exist_ok=True)
-    base_name = str(module).split('(')[0]
-    index = 0
-    image_name = '.'  # '.' is surely exist, to make first loop condition True
-    print(base_name)
-    base_name = base_name+'my_'
-    base_name='testD'+base_name
-    in_base_name = base_name+'input'
-    while os.path.exists(image_name) or os.path.exists(in_name):
-        index += 1
-        image_name = os.path.join(
-            INSTANCE_FOLDER, '%s_%d.png' % (base_name, index))
-        in_name =os.path.join(
-            INSTANCE_FOLDER, '%s_%d.png' % (in_base_name, index))
-    return image_name,in_name
-
-def draw_weight(net):
-
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus']=False
-    name = 'layers.2.smsblock.5.attns.c_attns.down_rank.mb'
-    name = 'layers.2.smsblock.5.attns.c_attns.cab.3.mb'
-    weight = net.state_dict()[name]
-    #print(weight.transpose(1,2),weight.shape)
-    
-    data = weight.clone().detach().cpu().numpy()[:,:24]
-    #data = data[np.newaxis,np.newaxis,...]
-    df = pd.DataFrame(data)
-    # 指定颜色带的色系
-    correlation = df.corr()    
-    print(correlation[0][0])
-    sx = sns.heatmap(correlation, cmap="jet")
-    print('finish')
-    #plt.title('相关性热力图')
-    sx.axis('off')
-    img = sx.get_figure()
-    #plt.imshow(img)
-    print('saving')
-    img.savefig('./df_corr.png',bbox_inches='tight')
-    # draw_features(1,1,data,INSTANCE_FOLDER+'memory.png')
-
 class MultipleLoss(nn.Module):
     def __init__(self, losses, weight=None):
         super(MultipleLoss, self).__init__()
@@ -223,7 +74,7 @@ def train_options(parser):
     parser.add_argument('--prefix', '-p', type=str, default='denoise',
                         help='prefix')
     parser.add_argument('--arch', '-a', metavar='ARCH', required=True,
-                        choices=model_names,
+                        choices=                                                         model_names        ,
                         help='model architecture: ' +
                         ' | '.join(model_names))
     parser.add_argument('--batchSize', '-b', type=int,
@@ -254,6 +105,8 @@ def train_options(parser):
                             help='forward chop')                                      
     parser.add_argument('--resumePath', '-rp', type=str,
                         default=None, help='checkpoint to use.')
+    parser.add_argument('--test-dir', type=str,
+                        default='/data/HSI_Data/icvl_noise_50/512_noniid', help='The path of test HSIs')
     parser.add_argument('--dataroot', '-d', type=str,
                         default='/data/HSI_Data/ICVL64_31.db', help='data root')
     parser.add_argument('--clip', type=float, default=1e6)

@@ -22,22 +22,17 @@ if __name__ == '__main__':
     description='Hyperspectral Image Denoising (Complex noise)')
     opt = train_options(parser)
     print(opt)
-
-    data = datetime.datetime.now()
-    wandb.init(project="hsi-denoising2", entity="miayili",name=opt.arch+opt.prefix+'-'+str(data.month)+'-'+str(data.day)+'-'+str(data.hour)+':'+str(data.minute),config=opt)  
-    wandb.config.update(parser)
     
     img_options={}
-    img_options['patch_size'] = 256
+    img_options['patch_size'] = 128
 
     """Setup Engine"""
     engine = Engine(opt)
 
     """Dataset Setting"""
     
-    train_dir = '/media/lmy/LMY/aaai/train_real/'
-    if not os.path.exists(train_dir):
-        train_dir = '/home/limiaoyu/data/train_real/'
+    train_dir = '/train_real/'
+
     train_dataset = DataLoaderTrain(train_dir,50,img_options=img_options,use2d=engine.get_net().use_2dconv)
     train_loader = DataLoader(train_dataset,
                               batch_size=opt.batchSize, shuffle=True,
@@ -45,16 +40,10 @@ if __name__ == '__main__':
    
     print('==> Preparing data..')
 
-    # icvl_64_31_TL = make_dataset(
-    #     opt, train_transform,
-    #     target_transform, common_transform, 64)
 
     """Test-Dev"""
     
-    basefolder = '/media/lmy/LMY/aaai/test_real'
-    if not os.path.exists(basefolder):
-        basefolder = '/home/limiaoyu/data/test_real/'
-    
+    basefolder = '/test_real'
     
     mat_datasets = DataLoaderVal(basefolder, 50, None,use2d=engine.get_net().use_2dconv)
     
@@ -84,9 +73,8 @@ if __name__ == '__main__':
         
         engine.train(train_loader,mat_loader)
         
-        engine.validate(mat_loader, 'icvl-validate-noniid')
+        engine.validate(mat_loader, 'real')
         
-        #engine.validate(mat_loaders[1], 'icvl-validate-mixture')
 
         display_learning_rate(engine.optimizer)
         print('Latest Result Saving...')

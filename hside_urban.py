@@ -21,9 +21,6 @@ if __name__ == '__main__':
     """Setup Engine"""
     engine = Engine(opt)
 
-    data = datetime.datetime.now()
-    wandb.init(project="hsi-denoising-real", entity="miayili",name=opt.arch+opt.prefix+'-'+str(data.month)+'-'+str(data.day)+'-'+str(data.hour)+':'+str(data.minute),config=opt)  
-    wandb.config.update(parser)
     """Dataset Setting"""
     
     HSI2Tensor = partial(HSI2Tensor, use_2dconv=engine.net.use_2dconv)

@@ -27,17 +27,12 @@ if __name__ == '__main__':
    
     target_transform = HSI2Tensor()
 
-
-
-
     """Test-Dev"""
 
-    basefolder = '/data/HSI_Data/icvl_noise_50/512_noniid'
+    test_dir = opt.test_dir
 
-    
-    
     mat_datasets = [MatDataFromFolder(
-        basefolder, size=50) ]
+        test_dir, size=50) ]
     if not engine.get_net().use_2dconv:
         mat_transform = Compose([
             LoadMatHSI(input_key='input', gt_key='gt',
@@ -66,7 +61,7 @@ if __name__ == '__main__':
     
 
     strart_time = time.time()
-    engine.test(mat_loaders[0], basefolder)
+    engine.test(mat_loaders[0], test_dir)
     end_time = time.time()
     test_time = end_time-strart_time
     print('cost-time: ',(test_time/50))
