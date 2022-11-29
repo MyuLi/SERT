@@ -36,7 +36,7 @@ of extracting global underlying low-rank property of spatial-spectral cubes to s
 
 ### ICVL 
 * The entire ICVL dataset download link: https://icvl.cs.bgu.ac.il/hyperspectral/
-1. split the entire dataset into training samples, testing samples and validating samples. The files used in training are listed in utility/icvl_train_list.txt.
+1. split the entire dataset into training samples, testing samples and validating samples. The files used in training are listed in utility/icvl_partition/icvl_train_list.txt.
 2. generate lmdb dataset for training
 
 ```
@@ -51,6 +51,8 @@ python utility/mat_data.py
 
 ### Realistic Dataset
 * Please refer to [[github-link]](https://github.com/ColinTaoZhang/HSIDwRD) for "Hyperspectral Image Denoising with Realistic Data in ICCV, 2021" to download the dataset
+
+Testing HSIs are listed in utility/realistic_partition/test.txt. Other HSIs in the dataset are used for training. 
 
 ### Urban dataset
 * The training dataset are from link: https://apex-esa.org/. The origin Urban dataset are from link:  https://rslab.ut.ac.ir/data.
@@ -69,13 +71,17 @@ python utility/mat_data.py
 #----training----
 python hside_simu.py -a sert_base -p sert_base_gaussian
 
-#----testing----
-python hside_simu_test.py -a sert_base -p sert_base_gaussian_test -r -rp checkpoints/icvl_gaussian.pth --test-dir /icvl_noise_50/512_50
+#----testing---- The results are shown in Table 1 in the main paper.
+python hside_simu_test.py -a sert_base -p sert_base_gaussian_test -r -rp checkpoints/icvl_gaussian.pth --test-dir /icvl_noise/512_50
 ```
 
 ```
 #for comlpex noise
-python hside_simu_test.py -a sert_base -p sert_base_complex_test -r -rp checkpoints/icvl_complex.pth --test-dir  /icvl_noise_50/512_mix
+#----training----
+python hside_simu_complex.py -a sert_base -p sert_base_complex
+
+#----testing---- The results are shown in Table 2 in the main paper.
+python hside_simu_test.py -a sert_base -p sert_base_complex_test -r -rp checkpoints/icvl_complex.pth --test-dir  /icvl_noise/512_mix
 ```
 
 ### Urban Dataset
@@ -83,7 +89,7 @@ python hside_simu_test.py -a sert_base -p sert_base_complex_test -r -rp checkpoi
 #----training----
 python hside_urban.py -a sert_urban -p sert_urban 
 
-#----testing----
+#----testing----  The results are shown in Figure 4 in the main paper.
 python hside_urban_test.py -a sert_urban -p sert_urban_test -r -rp ./checkpoints/real_urban.pth
 ```
 
@@ -92,7 +98,7 @@ python hside_urban_test.py -a sert_urban -p sert_urban_test -r -rp ./checkpoints
 #----training----
 python hside_real.py -a sert_real -p sert_real
 
-#----testing----
+#----testing---- The results are shown in Table 3 in the main paper.
 python hside_real_test.py -a sert_real -p sert_real_test -r -rp ./checkpoints/real_realistic.pth
 ```
 

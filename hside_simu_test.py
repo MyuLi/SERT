@@ -31,8 +31,8 @@ if __name__ == '__main__':
 
     test_dir = opt.test_dir
 
-    mat_datasets = [MatDataFromFolder(
-        test_dir, size=50) ]
+    mat_dataset = MatDataFromFolder(
+        test_dir) 
     if not engine.get_net().use_2dconv:
         mat_transform = Compose([
             LoadMatHSI(input_key='input', gt_key='gt',
@@ -43,15 +43,15 @@ if __name__ == '__main__':
             LoadMatHSI(input_key='input', gt_key='gt', needsigma=False),
         ])
 
-    mat_datasets = [TransformDataset(mat_dataset, mat_transform)
-                    for mat_dataset in mat_datasets]
+    mat_dataset = TransformDataset(mat_dataset, mat_transform)
+                    
 
  
-    mat_loaders = [DataLoader(
+    mat_loader = DataLoader(
         mat_dataset,
         batch_size=1, shuffle=False,
         num_workers=1, pin_memory=opt.no_cuda
-    ) for mat_dataset in mat_datasets]        
+    )       
 
     base_lr = opt.lr
     epoch_per_save = 5
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     
 
     strart_time = time.time()
-    engine.test(mat_loaders[0], test_dir)
+    engine.test(mat_loader, test_dir)
     end_time = time.time()
     test_time = end_time-strart_time
-    print('cost-time: ',(test_time/50))
+    print('cost-time: ',(test_time/len(mat_dataset)))

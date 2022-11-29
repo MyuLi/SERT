@@ -106,7 +106,7 @@ def train_options(parser):
     parser.add_argument('--resumePath', '-rp', type=str,
                         default=None, help='checkpoint to use.')
     parser.add_argument('--test-dir', type=str,
-                        default='/data/HSI_Data/icvl_noise_50/512_noniid', help='The path of test HSIs')
+                        default='/data/HSI_Data/icvl_noise/512_noniid', help='The path of test HSIs')
     parser.add_argument('--dataroot', '-d', type=str,
                         default='/data/HSI_Data/ICVL64_31.db', help='data root')
     parser.add_argument('--clip', type=float, default=1e6)
