@@ -1,6 +1,8 @@
 # Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising
 
-
+Miaoyu Li, Ji Liu, Ying Fu, Yulun Zhang, and Dejing Dou, "Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising" CVPR 2023 
+Arxiv [pdf] Supp [pdf]
+We provide simulation data and real data of our system. You can download them by the following links.
 
 
 <hr />
@@ -130,3 +132,16 @@ python hside_real_test.py -a sert_real -p sert_real_test -r -rp ./checkpoints/re
 
 <img src = "figs/urban.png"> 
 </details>
+
+## Citations
+
+If you find the code helpful in your resarch or work, please cite the following paper(s).
+
+```
+@inproceedings{li2023spatial,
+    title={Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising},
+    author={Miaoyu Li and Ji Liu and Ying Fu and Yulun Zhang and Dejing Dou},
+    booktitle=Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year={2023}
+}
+```

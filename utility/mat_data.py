@@ -30,10 +30,6 @@ def create_mat_dataset(datadir, fnames, newdir, matkey, func=None, load=h5py.Fil
             print('open error for {}'.format(fn))
             continue
             
-        # Visualize3D(data)
-        # import ipdb; ipdb.set_trace()
-
-        # if not exists(join(newdir, fn)):
         
 
 def create_icvl_sr():
@@ -54,7 +50,7 @@ def create_icvl_sr():
         
         data = crop_center(data, 512, 512)
         
-        data = minmax_normali0ze(data)
+        data = minmax_normalize(data)
         return data
     
     create_mat_dataset(datadir, fnames, newdir, 'rad', func=func)
