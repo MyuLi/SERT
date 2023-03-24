@@ -1,8 +1,8 @@
 # Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising
 
-Miaoyu Li, Ji Liu, Ying Fu, Yulun Zhang, and Dejing Dou, "Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising" CVPR 2023 
+Miaoyu Li, Ji Liu, Ying Fu, Yulun Zhang, and Dejing Dou, "Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising" CVPR 2023
+
 Arxiv [pdf] Supp [pdf]
-We provide simulation data and real data of our system. You can download them by the following links.
 
 
 <hr />
