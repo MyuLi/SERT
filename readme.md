@@ -1,6 +1,6 @@
 # Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising
 
-Miaoyu Li, Ji Liu, Ying Fu, Yulun Zhang, and Dejing Dou, "Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising" CVPR 2023
+Miaoyu Li, Ji Liu, [Ying Fu](https://ying-fu.github.io/), [Yulun Zhang](http://yulunzhang.com/), and Dejing Dou, "Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising" CVPR 2023
 
 Arxiv [pdf] 
 
@@ -25,33 +25,36 @@ of extracting global underlying low-rank property of spatial-spectral cubes to s
 
 ## Models
 
-We also provide the checkpoints of our competing methods
+We also provide the checkpoints of our competing methods.
 ### Quantitative Comparison on ICVL Dataset
-| Method  | Params (M)  | GFLOPs | Model Zoo (Gaussian noise)   |  Model Zoo (Complex noise)             
-| :------ | :--------: | :--------: | :--------: | :----------------------------------------------------------: | 
-| GRNet  |   41.44    | 610.7| [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) |
-| QRNN3D   |   0.86  | 2513.7 |[Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) |   [Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) | 
-| T3SC |   0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | 
-| MACNet     |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1c96i_L7KqiXgEl4xhiwYPTA_pbd75xYB?usp=share_link)   | [Google Drive](https://drive.google.com/file/d/1zuaphGGw52FUBZ5fsYbHd4la88p7LoD7/view?usp=share_link) | 
-|SERT| 1.91 |  1018.9 | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)  | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link) 
+| Method  | Publication| Params (M)  | GFLOPs  (512×512×31) | Model Zoo (Gaussian noise)   |  Model Zoo (Complex noise)             
+| :------ | :--------: | :--------: | :--------: | :--------: | :----------------------------------------------------------: | 
+| [GRNet](https://ieeexplore.ieee.org/document/9397278)  |  TGRS 2022 | 41.44    | 610.7| [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) |
+| [QRNN3D](https://arxiv.org/abs/2003.04547)  |TNNLS 2020 |   0.86  | 2513.7 |[Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) |   [Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) | 
+| [T3SC](https://arxiv.org/abs/2111.09708) | NeurIPS 2021 | 0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | 
+| [MACNet](https://ieeexplore.ieee.org/document/9631264)  |  TGRS 2022 |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1c96i_L7KqiXgEl4xhiwYPTA_pbd75xYB?usp=share_link)   | [Google Drive](https://drive.google.com/file/d/1zuaphGGw52FUBZ5fsYbHd4la88p7LoD7/view?usp=share_link) | 
+| [SST](http://arxiv.org/abs/2211.14090)  | AAAI 2023  |   4.10  | -  |   [Google Drive](https://drive.google.com/drive/folders/1U4qYx0IGsfkqEskRmuJMBDCt-EVPGC1_?usp=sharing)   | [Google Drive](https://drive.google.com/drive/folders/1U4qYx0IGsfkqEskRmuJMBDCt-EVPGC1_?usp=sharing) | 
+|[SERT]()| CVPR 2023 | 1.91 |  1018.9 | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)  | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)
 
 ### Quantitative Comparison on Realistic Dataset
-| Method  | Params (M)  | GFLOPs | Model Zoo 
+| Method  | Params (M)  | GFLOPs(512×512×34) | Model Zoo 
 | :------ | :--------: | :--------: | :--------: | 
-| GRNet  |   44.40    | 611.9 | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
-| QRNN3D   |   0.86  | 2756.9 |[Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
-| T3SC |   0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)
-| MACNet     |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)  | 
-|SERT| 1.91 | 1021.9 | [Google Drive](https://drive.google.com/drive/folders/1RHk37FpGw6qrpAsq7mPMmOPXWSynurXo?usp=share_link)  
+| [GRNet](https://ieeexplore.ieee.org/document/9397278)  |   44.40    | 611.9 | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
+| [QRNN3D](https://arxiv.org/abs/2003.04547)    |   0.86  | 2756.9 |[Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
+| [T3SC](https://arxiv.org/abs/2111.09708) |   0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)
+| [MACNet](https://ieeexplore.ieee.org/document/9631264)  |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)  |
+|[SST](http://arxiv.org/abs/2211.14090)|  | |
+|[SERT]()| 1.91 | 1021.9 | [Google Drive](https://drive.google.com/drive/folders/1RHk37FpGw6qrpAsq7mPMmOPXWSynurXo?usp=share_link)  
 
 ### Quantitative Comparison on Apex/Urban Dataset
 | Method  | Params (M)  | GFLOPs | Model Zoo 
 | :------ | :--------: | :--------: | :--------: | 
-| GRNet  |   44.53    | | [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
-| QRNN3D   |   0.86  | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
-| T3SC |   0.83   | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link) | 
-| MACNet     |   0.43  |   |   [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)   | 
-|SERT| 8 | | [Google Drive](https://drive.google.com/drive/folders/1tf09Gnn7dvIpF_mmGKvfsm3WWe_ghHxi?usp=sharing)  
+| [GRNet](https://ieeexplore.ieee.org/document/9397278)   |   44.53    | | [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
+| [QRNN3D](https://arxiv.org/abs/2003.04547)    |   0.86  | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
+| [T3SC](https://arxiv.org/abs/2111.09708) |   0.83   | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link) | 
+| [MACNet](https://ieeexplore.ieee.org/document/9631264)    |   0.43  |   |   [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)   | 
+[SST](http://arxiv.org/abs/2211.14090)  |22.76 |  | [GoogleDriver](https://drive.google.com/file/d/1HsPvLVP76vgAZj-9QiSVkAz9Uw_Iwc5d/view?usp=share_link)|
+|[SERT]()| 8 | | [Google Drive](https://drive.google.com/drive/folders/1tf09Gnn7dvIpF_mmGKvfsm3WWe_ghHxi?usp=sharing)  
 
 
 <a id="Datasets"></a>
@@ -137,7 +140,7 @@ python hside_real_test.py -a sert_real -p sert_real_test -r -rp ./checkpoints/re
 
 <details>
 <summary><strong>Denoising on Complex noise (ICVL)</strong> (click to expand) </summary>
-<img src = "figs/table2.png"> 
+<img src = "figs/complex.png"> 
 <img src = "figs/icvl.png"> 
 
 </details>
@@ -159,6 +162,19 @@ python hside_real_test.py -a sert_real -p sert_real_test -r -rp ./checkpoints/re
 If you find the code helpful in your resarch or work, please cite the following paper(s).
 
 ```
+@article{wei2020QRNN3D,
+  title={3-D Quasi-Recurrent Neural Network for Hyperspectral Image Denoising},
+  author={Wei, Kaixuan and Fu, Ying and Huang, Hua},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2020},
+  publisher={IEEE}
+}
+@inproceedings{li2023spatial,
+    title={Spatial-Spectral Transformer for Hyperspectral Image Denoising},
+    author={Li, Miaoyu and Fu, Ying and Zhang, Yulun},
+    booktitle={AAAI},
+    year={2023}
+}
 @inproceedings{li2023spectral,
     title={Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising},
     author={Miaoyu Li and Ji Liu and Ying Fu and Yulun Zhang and Dejing Dou},
