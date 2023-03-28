@@ -29,28 +29,28 @@ We also provide the checkpoints of our competing methods
 ### Quantitative Comparison on ICVL Dataset
 | Method  | Params (M)  | GFLOPs | Model Zoo (Gaussian noise)   |  Model Zoo (Complex noise)             
 | :------ | :--------: | :--------: | :--------: | :----------------------------------------------------------: | 
-| GRNet  |   41.44    | | [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) |
-| QRNN3D   |   0.86  | |[Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) |   [Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) | 
-| T3SC |   0.83    | | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | 
-| MACNet     |   0.43  |   |   [Google Drive](https://drive.google.com/drive/folders/1c96i_L7KqiXgEl4xhiwYPTA_pbd75xYB?usp=share_link)   | [Google Drive](https://drive.google.com/file/d/1zuaphGGw52FUBZ5fsYbHd4la88p7LoD7/view?usp=share_link) | 
-|SERT| 1.91 | | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)  | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link) 
+| GRNet  |   41.44    | 610.7| [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1dJ0zK1GBlR7T_0VG4zpP5mgkdUoA8KF1?usp=share_link) |
+| QRNN3D   |   0.86  | 2513.7 |[Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) |   [Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) | 
+| T3SC |   0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | 
+| MACNet     |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1c96i_L7KqiXgEl4xhiwYPTA_pbd75xYB?usp=share_link)   | [Google Drive](https://drive.google.com/file/d/1zuaphGGw52FUBZ5fsYbHd4la88p7LoD7/view?usp=share_link) | 
+|SERT| 1.91 |  1018.9 | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)  | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link) 
 
 ### Quantitative Comparison on Realistic Dataset
 | Method  | Params (M)  | GFLOPs | Model Zoo 
 | :------ | :--------: | :--------: | :--------: | 
-| GRNet  |   44.40    |  | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
-| QRNN3D   |   0.86  | |[Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
-| T3SC |   0.83    |  | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)
-| MACNet     |   0.43  |   |   [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)  | 
-|SERT| 1.91 | | [Google Drive](https://drive.google.com/drive/folders/1RHk37FpGw6qrpAsq7mPMmOPXWSynurXo?usp=share_link)  
+| GRNet  |   44.40    | 611.9 | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
+| QRNN3D   |   0.86  | 2756.9 |[Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
+| T3SC |   0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)
+| MACNet     |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)  | 
+|SERT| 1.91 | 1021.9 | [Google Drive](https://drive.google.com/drive/folders/1RHk37FpGw6qrpAsq7mPMmOPXWSynurXo?usp=share_link)  
 
 ### Quantitative Comparison on Apex/Urban Dataset
 | Method  | Params (M)  | GFLOPs | Model Zoo 
 | :------ | :--------: | :--------: | :--------: | 
 | GRNet  |   44.53    | | [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
 | QRNN3D   |   0.86  | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
-| T3SC |   -   | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link) | 
-| MACNet     |   -  |   |   [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)   | 
+| T3SC |   0.83   | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link) | 
+| MACNet     |   0.43  |   |   [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)   | 
 |SERT| 8 | | [Google Drive](https://drive.google.com/drive/folders/1tf09Gnn7dvIpF_mmGKvfsm3WWe_ghHxi?usp=sharing)  
 
 
