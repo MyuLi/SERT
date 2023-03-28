@@ -159,7 +159,7 @@ python hside_real_test.py -a sert_real -p sert_real_test -r -rp ./checkpoints/re
 If you find the code helpful in your resarch or work, please cite the following paper(s).
 
 ```
-@inproceedings{li2023spatial,
+@inproceedings{li2023spectral,
     title={Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising},
     author={Miaoyu Li and Ji Liu and Ying Fu and Yulun Zhang and Dejing Dou},
     booktitle=Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
