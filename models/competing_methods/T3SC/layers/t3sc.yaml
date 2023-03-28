@@ -1,0 +1,52 @@
+class_name: "MultilayerModel"
+trainable: true
+beta: 0
+ckpt: null
+params:
+  ssl: 0
+  n_ssl: 4
+  channels: 31
+  ckpt: null
+  layers:
+    l0:
+      name: "LowRankSCLayer"
+      params:
+        patch_side: 1
+        K: 12
+        rank: 1
+        code_size: 64
+        stride: 1
+        input_centering: 1
+        patch_centering: 0
+        tied: "D"
+        init_method: "kaiming_uniform"
+        lbda_init: 0.001
+        lbda_mode: "MC"
+        beta: 0
+        ssl: 00
+    l1:
+      name: "LowRankSCLayer"
+      params:
+        patch_side: 5
+        K: 5
+        rank: 3
+        code_size: 1024
+        stride: 1
+        input_centering: 0
+        patch_centering: 1
+        tied: "D"
+        init_method: "kaiming_uniform"
+        lbda_init: 0.001
+        lbda_mode: "MC"
+        beta: 0
+        ssl: 0
+
+backtracking:
+  monitor: "val_mpsnr"
+  mode: "max"
+  dirpath: "backtracking"
+  period: 5
+  div_thresh: 4
+  dummy: False
+  lr_decay: 0.8
+id: T3SC

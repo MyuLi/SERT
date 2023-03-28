@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
 
     """Test-Dev"""
-    basefolder = '/test_real'
+    basefolder = opt.testdir
   
     mat_datasets = DataLoaderVal(basefolder, 50, None,use2d=engine.get_net().use_2dconv)
     print(len(mat_datasets))

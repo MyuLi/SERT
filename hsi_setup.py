@@ -383,13 +383,10 @@ class Engine(object):
 
 
     def load(self, resumePath=None, load_opt=True):
-        model_best_path = join(self.basedir, self.prefix, 'model_latest.pth')
-        if os.path.exists(model_best_path):
-            best_model = torch.load(model_best_path)
 
         print('==> Resuming from checkpoint %s..' % resumePath)
         assert os.path.isdir('checkpoints'), 'Error: no checkpoint directory found!'
-        checkpoint = torch.load(resumePath or model_best_path)
+        checkpoint = torch.load(resumePath )
 
         if load_opt:
             self.optimizer.load_state_dict(checkpoint['optimizer'])
