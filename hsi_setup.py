@@ -250,7 +250,7 @@ class Engine(object):
            # print(self.net)
         total = sum([param.nelement() for param in self.net.parameters()])    
         print("Number of parameter: %.2fM" % (total/1e6))
-        from torchvision.models import resnet50
+        
 
     #    # stat(self.net, (31, 64, 64))
         # from ptflops import get_model_complexity_info
@@ -387,11 +387,10 @@ class Engine(object):
         print('==> Resuming from checkpoint %s..' % resumePath)
         assert os.path.isdir('checkpoints'), 'Error: no checkpoint directory found!'
         checkpoint = torch.load(resumePath )
+        # if load_opt:
+        #     self.optimizer.load_state_dict(checkpoint['optimizer'])
 
-        if load_opt:
-            self.optimizer.load_state_dict(checkpoint['optimizer'])
-        ###
-        self.get_net().load_state_dict(checkpoint['net'])
+        self.get_net().load_state_dict(checkpoint['state_dict'])
 
         
 

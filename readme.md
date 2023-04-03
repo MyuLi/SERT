@@ -33,29 +33,28 @@ We also provide the checkpoints of our competing methods.
 | [QRNN3D](https://arxiv.org/abs/2003.04547)  |TNNLS 2020 |   0.86  | 2513.7 |[Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) |   [Google Drive](https://drive.google.com/drive/folders/1A30K04dUzDwOlWyvlIq-uj6i1Jw5zHVx?usp=share_link) | 
 | [T3SC](https://arxiv.org/abs/2111.09708) | NeurIPS 2021 | 0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | [Google Drive](https://drive.google.com/drive/folders/1ICEe9vyQjs9p3D09i2cSPJeYyy9vAOq3?usp=share_link) | 
 | [MACNet](https://ieeexplore.ieee.org/document/9631264)  |  TGRS 2022 |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1c96i_L7KqiXgEl4xhiwYPTA_pbd75xYB?usp=share_link)   | [Google Drive](https://drive.google.com/file/d/1zuaphGGw52FUBZ5fsYbHd4la88p7LoD7/view?usp=share_link) | 
-| [SST](http://arxiv.org/abs/2211.14090)  | AAAI 2023  |   4.10  | -  |   [Google Drive](https://drive.google.com/drive/folders/1U4qYx0IGsfkqEskRmuJMBDCt-EVPGC1_?usp=sharing)   | [Google Drive](https://drive.google.com/drive/folders/1U4qYx0IGsfkqEskRmuJMBDCt-EVPGC1_?usp=sharing) | 
+| [SST](http://arxiv.org/abs/2211.14090)  | AAAI 2023  |   4.10  | 2082.4` |   [Google Drive](https://drive.google.com/drive/folders/1U4qYx0IGsfkqEskRmuJMBDCt-EVPGC1_?usp=sharing)   | [Google Drive](https://drive.google.com/drive/folders/1U4qYx0IGsfkqEskRmuJMBDCt-EVPGC1_?usp=sharing) | 
 |[SERT]()| CVPR 2023 | 1.91 |  1018.9 | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)  | [Google Drive](https://drive.google.com/drive/folders/1PQv7nZREOrYaC65gBdDRAEthoTRa9q0h?usp=share_link)
 
 ### Quantitative Comparison on Realistic Dataset
-| Method  | Params (M)  | GFLOPs(512×512×34) | Model Zoo 
-| :------ | :--------: | :--------: | :--------: | 
-| [GRNet](https://ieeexplore.ieee.org/document/9397278)  |   44.40    | 611.9 | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
-| [QRNN3D](https://arxiv.org/abs/2003.04547)    |   0.86  | 2756.9 |[Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
-| [T3SC](https://arxiv.org/abs/2111.09708) |   0.83    | - | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)
-| [MACNet](https://ieeexplore.ieee.org/document/9631264)  |   0.43  | -  |   [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)  |
-|[SST](http://arxiv.org/abs/2211.14090)|  | |
-|[SERT]()| 1.91 | 1021.9 | [Google Drive](https://drive.google.com/drive/folders/1RHk37FpGw6qrpAsq7mPMmOPXWSynurXo?usp=share_link)  
+| Method  | Params (M)  | GFLOPs(512×512×34) | PSNR |Model Zoo 
+| :------ | :--------: | :--------: | :--------: |:--------:  | 
+| [GRNet](https://ieeexplore.ieee.org/document/9397278)  |   44.40    | 611.9 | | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
+| [QRNN3D](https://arxiv.org/abs/2003.04547)    |   0.86  | 2756.9 | |[Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link) |
+| [T3SC](https://arxiv.org/abs/2111.09708) |   0.83    | - |  | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)
+| [MACNet](https://ieeexplore.ieee.org/document/9631264)  |   0.43  | -  |  | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=share_link)  |
+|[SST](http://arxiv.org/abs/2211.14090)| 2.14 |  | | [Google Drive](https://drive.google.com/drive/folders/1SmUMKHmlYkngMpSQ_nlfnaDJYQ4ZyI0U?usp=sharing)
+|[SERT]()| 1.91 | 1021.9 | | [Google Drive](https://drive.google.com/drive/folders/1RHk37FpGw6qrpAsq7mPMmOPXWSynurXo?usp=share_link)  
 
 ### Quantitative Comparison on Apex/Urban Dataset
 | Method  | Params (M)  | GFLOPs | Model Zoo 
-| :------ | :--------: | :--------: | :--------: | 
-| [GRNet](https://ieeexplore.ieee.org/document/9397278)   |   44.53    | | [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
+| :------ | :--------: | :--------: | :--------: |
+| [GRNet](https://ieeexplore.ieee.org/document/9397278)   |   44.53    |  | [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
 | [QRNN3D](https://arxiv.org/abs/2003.04547)    |   0.86  | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)  |
 | [T3SC](https://arxiv.org/abs/2111.09708) |   0.83   | |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link) | 
-| [MACNet](https://ieeexplore.ieee.org/document/9631264)    |   0.43  |   |   [Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)   | 
-[SST](http://arxiv.org/abs/2211.14090)  |22.76 |  | [GoogleDriver](https://drive.google.com/file/d/1HsPvLVP76vgAZj-9QiSVkAz9Uw_Iwc5d/view?usp=share_link)|
-|[SERT]()| 8 | | [Google Drive](https://drive.google.com/drive/folders/1tf09Gnn7dvIpF_mmGKvfsm3WWe_ghHxi?usp=sharing)  
-
+| [MACNet](https://ieeexplore.ieee.org/document/9631264)    |   0.43    |   |[Google Drive](https://drive.google.com/drive/folders/132YNE5TqiBcpA479NLFtSYQEY9ge8NRX?usp=share_link)   | 
+[SST](http://arxiv.org/abs/2211.14090)  |22.76 |   |[GoogleDriver](https://drive.google.com/file/d/1HsPvLVP76vgAZj-9QiSVkAz9Uw_Iwc5d/view?usp=share_link)|
+|[SERT]()| 8 |  | [Google Drive](https://drive.google.com/drive/folders/1tf09Gnn7dvIpF_mmGKvfsm3WWe_ghHxi?usp=sharing)  |
 
 <a id="Datasets"></a>
 ## Datasets

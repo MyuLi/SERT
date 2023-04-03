@@ -8,7 +8,6 @@ def sert_base():
     net.bandwise = False          
     return net
 
-
 def sert_tiny():
     net = SERT(inp_channels=31,dim = 96,         window_sizes=[16,32] ,        depths=[ 4,4],         num_heads=[ 6,6],split_sizes=[2,4],mlp_ratio=2,weight_factor=0.1,memory_blocks=128,down_rank=8)     #16,32,32
     net.use_2dconv = True     
@@ -90,3 +89,27 @@ def macnet():
     net.use_2dconv = True
     net.bandwise = False          
     return net 
+
+def sst():
+    net = SST(inp_channels=31,dim = 90,
+        window_size=8,
+        depths=[ 6,6,6,6,6,6],
+        num_heads=[ 6,6,6,6,6,6],mlp_ratio=2)
+    net.use_2dconv = True
+    net.bandwise = False
+    return net
+
+def sst_real():
+    net = SST(inp_channels=34,depths=[6,6,6])
+    net.use_2dconv = True
+    net.bandwise = False
+    return net
+
+def sst_urban():
+    net = SST(inp_channels=210,dim = 210,
+        window_size=8,
+        depths=[ 6,6,6,6,6,6],
+        num_heads=[ 6,6,6,6,6,6],mlp_ratio=2)
+    net.use_2dconv = True
+    net.bandwise = False
+    return net
