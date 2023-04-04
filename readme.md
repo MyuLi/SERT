@@ -161,13 +161,6 @@ python hside_real_test.py -a sert_real -p sert_real_test -r -rp ./checkpoints/re
 If you find the code helpful in your resarch or work, please cite the following paper(s).
 
 ```
-@article{wei2020QRNN3D,
-  title={3-D Quasi-Recurrent Neural Network for Hyperspectral Image Denoising},
-  author={Wei, Kaixuan and Fu, Ying and Huang, Hua},
-  journal={IEEE Transactions on Neural Networks and Learning Systems},
-  year={2020},
-  publisher={IEEE}
-}
 @inproceedings{li2023spatial,
     title={Spatial-Spectral Transformer for Hyperspectral Image Denoising},
     author={Li, Miaoyu and Fu, Ying and Zhang, Yulun},
@@ -181,3 +174,6 @@ If you find the code helpful in your resarch or work, please cite the following 
     year={2023}
 }
 ```
+
+## Acknowledgement
+The codes are based on [QRNN3D](https://github.com/Vandermode/QRNN3D).
