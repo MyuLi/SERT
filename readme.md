@@ -2,7 +2,7 @@
 
 Miaoyu Li, Ji Liu, [Ying Fu](https://ying-fu.github.io/), [Yulun Zhang](http://yulunzhang.com/), and Dejing Dou, "Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising" CVPR 2023
 
-Arxiv [pdf] 
+[Arxiv](http://arxiv.org/abs/2304.00844) 
 
 
 <hr />
