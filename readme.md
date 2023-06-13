@@ -170,7 +170,7 @@ If you find the code helpful in your resarch or work, please cite the following 
 @inproceedings{li2023spectral,
     title={Spectral Enhanced Rectangle Transformer for Hyperspectral Image Denoising},
     author={Miaoyu Li and Ji Liu and Ying Fu and Yulun Zhang and Dejing Dou},
-    booktitle=Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+    booktitle={CVPR},
     year={2023}
 }
 ```
