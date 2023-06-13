@@ -3,14 +3,6 @@ import numpy as np
 from PIL import Image
 import os
 import os.path
-import six
-import string
-import sys
-import caffe
-if sys.version_info[0] == 2:
-    import cPickle as pickle
-else:
-    import pickle
 
 
 class LMDBDataset(data.Dataset):
@@ -24,31 +16,24 @@ class LMDBDataset(data.Dataset):
             self.length = int(self.length)
             print(self.length)
         self.repeat = repeat
-        # cache_file = '_cache_' + db_path.replace('/', '_')
-        # if os.path.isfile(cache_file):
-        #     self.keys = pickle.load(open(cache_file, "rb"))
-        # else:
-        #     with self.env.begin(write=False) as txn:
-        #         self.keys = [key for key, _ in txn.cursor()]
-        #     pickle.dump(self.keys, open(cache_file, "wb"))
+        with open(os.path.join(db_path, 'meta_info.txt')) as fin:
+            line = fin.readlines()[0]
+            size = line.split('(')[1].split(')')[0]
+            h,w,c =[ int(s) for s in size.split(',')]
+        self.channels = c
+        self.width = h
+        self.height = w
+      
 
     def __getitem__(self, index):
-        ri = index // self.length
-        ini_band = [0,10,20,21]
-        #ini_band = [10]
         index = index % (self.length)
         env = self.env
         with env.begin(write=False) as txn:
-            raw_datum = txn.get('{:08}'.format(index).encode('ascii'))
+            data = txn.get('{:08}'.format(index).encode('ascii'))
+        flat_x = np.fromstring(data, dtype=np.float32)
+       
+        x = flat_x.reshape(self.channels, self.height, self.width)
 
-        datum = caffe.proto.caffe_pb2.Datum()
-        datum.ParseFromString(raw_datum)
-
-        flat_x = np.fromstring(datum.data, dtype=np.float32)
-        # flat_x = np.fromstring(datum.data, dtype=np.float64)
-        x = flat_x.reshape(datum.channels, datum.height, datum.width)
-        # if self.repeat >= 1:
-        #     x = x[ini_band[ri]:ini_band[ri]+10,:,:]
         return x
 
     def __len__(self):
@@ -57,20 +42,10 @@ class LMDBDataset(data.Dataset):
     def __repr__(self):
         return self.__class__.__name__ + ' (' + self.db_path + ')'
 
-
 if __name__ == '__main__':
-    # dataset = LMDBDataset('Data/ICVL/ICVL32.db')
-    # dataset = LMDBDataset('/home/kaixuan/Dataset/ICVL32_28.db')
-    # dataset = LMDBDataset('/home/kaixuan/Dataset/CAVE512_31.db')
-    dataset = LMDBDataset('/home/kaixuan/Dataset/ICVL32_16.db')
+    dataset = LMDBDataset('/media/lmy/LMY/aaai/ICVL64_31.db')
     
     print(len(dataset))
-    # data = dataset[3]
-    # print(data.shape)
-    # print(np.max(data[...]), np.min(data[...]))
-    # from util import Visualize3D
-    # Visualize3D(data)
 
-    train_loader = data.DataLoader(dataset, batch_size=128, num_workers=4)
+    train_loader = data.DataLoader(dataset, batch_size=20, num_workers=4)
     print(iter(train_loader).next().shape)
-    

@@ -9,7 +9,7 @@ from utility import *
 import datetime
 import time
 from hsi_setup import Engine, train_options, make_dataset
-
+import wandb
 if __name__ == '__main__':
     """Training settings"""
     
@@ -18,6 +18,10 @@ if __name__ == '__main__':
     description='Hyperspectral Image Denoising (Complex noise)')
     opt = train_options(parser)
     print(opt)
+
+    data = datetime.datetime.now()
+    wandb.init(project="hsi-denoising", entity="name",name=opt.arch+opt.prefix+'-'+str(data.month)+'-'+str(data.day)+'-'+str(data.hour)+':'+str(data.minute),config=opt)  
+    wandb.config.update(parser)
 
     """Setup Engine"""
     engine = Engine(opt)
@@ -34,9 +38,7 @@ if __name__ == '__main__':
         HSI2Tensor()
     ])
 
-    icvl_64_31_dir = '/data/HSI_Data/ICVL64_31.db/'
-    if not os.path.exists(icvl_64_31_dir):
-        icvl_64_31_dir = '/home/limiaoyu/data/ICVL64_31.db'
+    icvl_64_31_dir ='/data/HSI_Data/ICVL64_31.db/'
     icvl_64_31 = LMDBDataset(icvl_64_31_dir)
     
     target_transform = HSI2Tensor()
@@ -45,9 +47,6 @@ if __name__ == '__main__':
 
     """Test-Dev"""
     basefolder = '/data/HSI_Data/icvl_val_gaussian/512_10_70'
-    if not os.path.exists(basefolder):
-        basefolder ='/home/limiaoyu/data/icvl_val_gaussian/512_50'
-    
 
     mat_datasets = [MatDataFromFolder(
         basefolder, size=5)]

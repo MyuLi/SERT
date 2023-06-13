@@ -197,14 +197,12 @@ class ChannelAttention(nn.Module):
         t = x.transpose(1,2)
         y = self.pool(t).squeeze(-1)
 
-        low_rank_f = self.subnet(y).unsqueeze(2) #B,C,1
+        low_rank_f = self.subnet(y).unsqueeze(2)
 
-        mbg = self.mb.unsqueeze(0).repeat(b, 1, 1) #B,C,256
-        f1 = (low_rank_f.transpose(1,2) ) @mbg  #B,1,256 
-       # print(low_rank_f.shape[0]*mbg.shape[-1]*mbg.shape[-2] )
+        mbg = self.mb.unsqueeze(0).repeat(b, 1, 1)
+        f1 = (low_rank_f.transpose(1,2) ) @mbg  
         f_dic_c = F.softmax(f1 * (int(self.low_dim) ** (-0.5)), dim=-1) # get the similarity information
-        y1 = f_dic_c@mbg.transpose(1,2) #B,1,C #get the projected feature vector
-       # print(f_dic_c.shape[0]*f_dic_c.shape[-1]*mbg.shape[-2] )
+        y1 = f_dic_c@mbg.transpose(1,2) 
         y2 = self.upnet(y1)
         out = x*y2
         return out
@@ -477,16 +475,19 @@ class SERT(nn.Module):
         self.conv_delasta = nn.Conv2d(dim,inp_channels, 3, 1, 1)
 
     def forward(self, inp_img):
-        #x = self.norm(inp_img)
+        _,_,h_inp,w_inp = inp_img.shape
+        hb, wb = 16, 16
+        pad_h = (hb - h_inp % hb) % hb
+        pad_w = (wb - w_inp % wb) % wb
+        inp_img = F.pad(inp_img, (0, pad_h, 0, pad_w), 'reflect')
         f1 = self.conv_first(inp_img)
         x=f1
         for layer in self.layers:
             x = layer(x)
         
-
-        
         x = self.output(x+f1) #+ inp_img
         x = self.conv_delasta(x)+inp_img
+        x = x[:,:,:h_inp,:w_inp]
         return x
 
     def flops(self,shape):

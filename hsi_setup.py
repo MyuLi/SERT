@@ -390,7 +390,7 @@ class Engine(object):
         # if load_opt:
         #     self.optimizer.load_state_dict(checkpoint['optimizer'])
 
-        self.get_net().load_state_dict(checkpoint['state_dict'])
+        self.get_net().load_state_dict(checkpoint['net'])
 
         
 
@@ -450,7 +450,7 @@ class Engine(object):
                 ]
         print('[i] Eval dataset ...')
 
-
+        
         print(len(valid_loader))
         with torch.no_grad():
             for batch_idx, (inputs, targets) in enumerate(valid_loader):
